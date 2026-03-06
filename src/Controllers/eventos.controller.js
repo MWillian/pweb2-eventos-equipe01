@@ -1,10 +1,8 @@
-import { listar } from '../Services/eventos.services.js';
+import { 
+    Listar,
+ } from '../Services/eventos.services.js';
 
-export const ListarEventos = (req,res) => {
-    const eventos = listar();
+export function ListarEventos (req,res){
+    const eventos = Listar(req.query);
     res.json(eventos);
 };
-
-export const CriarEvento = (req,res) => {
-    //todo
-}
