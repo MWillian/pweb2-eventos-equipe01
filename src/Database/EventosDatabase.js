@@ -12,7 +12,7 @@ export class EventosDatabase {
   }
 
   buscarPorId(id) {
-    return this.eventos.find(e => e.id === id) || null;
+    return this.eventos.find(e => e.id === Number(id)) || null;
   }
 
   inserir(dados) {
@@ -33,7 +33,7 @@ export class EventosDatabase {
   }
 
   atualizar(id, dadosAtualizados) {
-    const index = this.eventos.findIndex(e => e.id === id);
+    const index = this.eventos.findIndex(e => e.id === Number(id));
     if (index === -1) return null;
 
     this.eventos[index] = {

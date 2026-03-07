@@ -9,5 +9,23 @@ export function Listar(filtros) {
         const estaAtivo = filtros.ativo === 'true';
         return todosEventos.filter(evento => evento.ativo === estaAtivo);
     }
-    return todosEventos;
-}
+};
+
+export function buscarPorId(id) {
+    try {
+        const eventoPorId = database.buscarPorId(id);
+        return eventoPorId;
+    } catch (error) {
+        console.error("Erro ao encontrar evento por ID: ", error);
+    }
+};
+
+export function novoEvento(dados) {
+    const inserirEvento = database.inserir(dados);
+    return inserirEvento;
+};
+
+export function atualizaEvento(id, dados) {
+    const atualizarEvento = database.atualizar(id, dados);
+    return atualizarEvento;
+};
