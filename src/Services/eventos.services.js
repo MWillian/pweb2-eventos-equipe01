@@ -8,6 +8,8 @@ export function Listar(filtros) {
     }else if (filtros.ativo) {
         const estaAtivo = filtros.ativo === 'true';
         return todosEventos.filter(evento => evento.ativo === estaAtivo);
+    }else if (filtros.modalidade) {
+        return todosEventos.filter(evento => evento.modalidade === filtros.modalidade);
     }
 };
 
@@ -29,3 +31,8 @@ export function atualizaEvento(id, dados) {
     const atualizarEvento = database.atualizar(id, dados);
     return atualizarEvento;
 };
+
+export function removerEvento(id,) {
+    const removerEvento = database.remover(id);
+    return removerEvento;
+}
