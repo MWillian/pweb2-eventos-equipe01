@@ -1,8 +1,8 @@
 export class EventosDatabase {
   constructor() {
     this.eventos = [
-      { titulo: "Workshop Node.js", descricao: "Dev Backend", vagas: 50, modalidade: "Presencial", cargaHoraria: 10, vagasDisponiveis:13,ativo:true,dataCriacao: new Date().toISOString()},
-      { titulo: "Live de Python", descricao: "Data Science", vagas: 200, modalidade: "Online", cargaHoraria: 4, vagasDisponiveis:20,ativo:false,dataCriacao: new Date().toISOString() }
+      { id: 1,titulo: "Workshop Node.js", descricao: "Dev Backend", vagas: 50, modalidade: "presencial", cargaHoraria: 10, vagasDisponiveis:13,ativo:true,dataCriacao: new Date().toISOString()},
+      { id: 2,titulo: "Live de Python", descricao: "Data Science", vagas: 200, modalidade: "online", cargaHoraria: 4, vagasDisponiveis:20,ativo:false,dataCriacao: new Date().toISOString() }
     ];
     this.proximoId = 1;
   }
