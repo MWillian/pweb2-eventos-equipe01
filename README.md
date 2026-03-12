@@ -1,3 +1,6 @@
 # ATV-PWEB-API-EVENTOS-ACADEMICOS
 
-Equipe: Daniel Costa Alencar, José Pedro Costa Duda, Matheus Willian do Nascimento Oliveira
+Equipe:
+Daniel Costa Alencar: DC-Alencar
+José Pedro Costa Duda: Peu81
+Matheus Willian do Nascimento Oliveira: MWillian
