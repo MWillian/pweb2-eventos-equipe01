@@ -18,10 +18,10 @@ export class EventosDatabase {
       titulo: dados.titulo,
       descricao: dados.descricao,
       vagas: dados.vagas,
-      vagasDisponiveis: dados.vagas,
+      vagasDisponiveis: dados.vagasDisponiveis,
       modalidade: dados.modalidade,
       cargaHoraria: dados.cargaHoraria,
-      ativo: true,
+      ativo: dados.ativo,
       dataCriacao: new Date().toISOString()
     };
 

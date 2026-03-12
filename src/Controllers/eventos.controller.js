@@ -3,34 +3,54 @@ import { EventosService} from '../Services/eventos.services.js';
 const eventosService = new EventosService();
 
 export class EventosController{
-    
-    ListarEventos = (req,res) => {
-        const eventos = eventosService.listar(req.query);
-        res.status(200).json(eventos);
+
+    ListarEventos = (req,res, next) => {
+        try {
+            const eventos = eventosService.listar(req.query);
+            res.json(eventos);
+        } catch (error) {
+          next(error);
+        };
     };
 
-    BuscarEventoPorId = (req, res) => {
-        const buscaId = eventosService.buscarPorId(req.params.id);
-        res.status(200).json(buscaId);
+    BuscarEventoPorId = (req, res, next) => {
+        try {
+            const {id} = req.params;
+            const buscaId = eventosService.buscarPorId(id);
+            res.status(200).json(buscaId);
+        } catch (error) {
+          next(error);
+        };
     };
     
-    criarEvento = (req, res) => {
-        const criaEventos = eventosService.novoEvento(req.body);
-        res.status(201).json(criaEventos)
+    criarEvento = (req, res, next) => {
+        try {
+            const novoEvento = req.body;
+            const eventoCriado = eventosService.novoEvento(novoEvento);
+            res.status(201).json(eventoCriado);
+        } catch (error) {
+          next(error);
+        }
     };
     
-    atualizarEvento = (req, res) => {
-        const atualizaEventos = eventosService.atualizaEvento(Number(req.params.id), req.body);
-        res.status(201).json(atualizaEventos);
+    atualizarEvento = (req, res, next) => {
+        try {
+            const {id} = req.params;
+            const eventoAtualizado = eventosService.atualizaEvento(id, req.body);
+            res.status(200).json(eventoAtualizado);
+        } catch (error) {
+          next(error);
+        }
     };
     
-    deletarEvento = (req, res) => {
-        const id = Number(req.params.id);
-        const eventoDeletado = eventosService.removerEvento(id);
-        return res.status(200).json({ 
-            mensagem: "Evento removido com sucesso!", 
-            eventoDeletado
-        });
+    deletarEvento = (req, res, next) => {
+        try {
+            const {id} = req.params;
+            eventosService.removerEvento(id);
+            return res.status(204).send();
+        } catch (error) {
+          next(error);
+        }
     };
 }
 
