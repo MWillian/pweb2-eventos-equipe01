@@ -1,9 +1,6 @@
 export class EventosDatabase {
   constructor() {
-    this.eventos = [
-      { id: 1,titulo: "Workshop Node.js", descricao: "Dev Backend", vagas: 50, modalidade: "presencial", cargaHoraria: 10, vagasDisponiveis:13,ativo:true,dataCriacao: new Date().toISOString()},
-      { id: 2,titulo: "Live de Python", descricao: "Data Science", vagas: 200, modalidade: "online", cargaHoraria: 4, vagasDisponiveis:20,ativo:false,dataCriacao: new Date().toISOString() }
-    ];
+    this.eventos = [];
     this.proximoId = 1;
   }
 
@@ -12,7 +9,7 @@ export class EventosDatabase {
   }
 
   buscarPorId(id) {
-    return this.eventos.find(e => e.id === Number(id)) || null;
+    return this.eventos.find(e => e.id === id) || null;
   }
 
   inserir(dados) {
@@ -33,7 +30,7 @@ export class EventosDatabase {
   }
 
   atualizar(id, dadosAtualizados) {
-    const index = this.eventos.findIndex(e => e.id === Number(id));
+    const index = this.eventos.findIndex(e => e.id === id);
     if (index === -1) return null;
 
     this.eventos[index] = {

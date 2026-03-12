@@ -1,38 +1,45 @@
 import {EventosDatabase} from "../Database/EventosDatabase.js";
 
 const database = new EventosDatabase();
-export function listar(filtros) {
-    const todosEventos = database.listarTodos();
-    if(!filtros){
+
+export class EventosService{
+
+    listar(filtros) {
+        //implementar try
+        const todosEventos = database.listarTodos(); 
+        if (filtros.ativo) {
+            const estaAtivo = filtros.ativo === 'true';
+            return todosEventos.filter(evento => evento.ativo === estaAtivo);
+        }if (filtros.modalidade) {
+            return todosEventos.filter(evento => evento.modalidade === filtros.modalidade);
+        }
         return todosEventos;
-    }if (filtros.ativo) {
-        const estaAtivo = filtros.ativo === 'true';
-        return todosEventos.filter(evento => evento.ativo === estaAtivo);
-    }if (filtros.modalidade) {
-        return todosEventos.filter(evento => evento.modalidade === filtros.modalidade);
-    }
-};
+    };
 
-export function buscarPorId(id) {
-    try {
-        const eventoPorId = database.buscarPorId(id);
-        return eventoPorId;
-    } catch (error) {
-        console.error("Erro ao encontrar evento por ID: ", error);
-    }
-};
+    buscarPorId(id) {
+        try {
+            const eventoPorId = database.buscarPorId(id);
+            return eventoPorId;
+        } catch (error) {
+            //implementar erro
+        }
+    };
 
-export function novoEvento(dados) {
-    const inserirEvento = database.inserir(dados);
-    return inserirEvento;
-};
+    novoEvento(dados) {
+        //implementar try
+        const inserirEvento = database.inserir(dados);
+        return inserirEvento;
+    };
 
-export function atualizaEvento(id, dados) {
-    const atualizarEvento = database.atualizar(id, dados);
-    return atualizarEvento;
-};
+    atualizaEvento(id, dados) {
+        //try
+        const atualizarEvento = database.atualizar(id, dados);
+        return atualizarEvento;
+    };
 
-export function removerEvento(id,) {
-    const removerEvento = database.remover(id);
-    return removerEvento;
+    removerEvento(id) {
+        //try
+        const removerEvento = database.remover(id);
+        return removerEvento;
+    };
 }
