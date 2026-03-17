@@ -1,14 +1,14 @@
 import {Router} from 'express';
 import {EventosController} from '../Controllers/eventos.controller.js';
 
-const router = Router();
+const eventosRouter = Router();
 const eventosController = new EventosController();
-router.get('/',eventosController.ListarEventos);
-router.get('/:id',eventosController.BuscarEventoPorId);
-router.post('/', eventosController.CriarEvento);
-router.put('/:id', eventosController.AtualizarEvento);
-router.delete('/:id', eventosController.DeletarEvento); 
-router.post('/:id/inscricao',eventosController.ReduzirQuantidadeVagas);
-router.patch('/:id/cancelar',eventosController.CancelarEvento)
+eventosRouter.get('/',eventosController.ListarEventos);
+eventosRouter.get('/:id',eventosController.BuscarEventoPorId);
+eventosRouter.post('/', eventosController.CriarEvento);
+eventosRouter.put('/:id', eventosController.AtualizarEvento);
+eventosRouter.delete('/:id', eventosController.DeletarEvento); 
+eventosRouter.post('/:id/inscricao',eventosController.ReduzirQuantidadeVagas);
+eventosRouter.patch('/:id/cancelar',eventosController.CancelarEvento)
 
-export default router;
+export default eventosRouter;
